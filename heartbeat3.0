@@ -1,0 +1,20 @@
+Heartbeat 3.0   pacemaker corosync
+
+
+
+crm
+  cib new config20120123
+  configure
+  property stonith-enabled=false
+
+primitive failover-ip ocf:heartbeat:IPaddr params ip=10.10.10.11 op monitor interval=10s
+
+
+property stonith-enabled=false
+
+  commit
+
+cib use (shadow)
+
+  cleanup resource
+
